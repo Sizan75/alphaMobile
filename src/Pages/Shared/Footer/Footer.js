@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import logo from '../../../assets/logo132.png'
 import { FaGithubSquare, FaFacebookSquare, FaLinkedin } from "react-icons/fa";
-
+import { FiMail } from "react-icons/fi";
 const Footer = () => {
     return (
         <footer className="footer p-10 bg-base-200 text-base-content">
@@ -25,10 +25,11 @@ const Footer = () => {
       <a href='https://www.linkedin.com/in/md-saki-uz-zaman/' rel='noreferrer' target='_blank'>
       <FaLinkedin className='text-3xl hover:text-blue-600'></FaLinkedin>
       </a>
+  
     </div>
-  <div className=' mt-6'>
-      <h4 className='text-base'>Email: sakiuzzaman26@gmail.com</h4>
-    </div>
+  
+    <p className='text-base inline-block'>Email: sakiuzzaman26@gmail.com</p>
+    
   </div>
       </footer>
     );

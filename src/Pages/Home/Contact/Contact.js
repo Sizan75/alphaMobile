@@ -1,6 +1,22 @@
-import React from 'react';
+import React, { useRef } from 'react';
+import { toast } from 'react-hot-toast';
+import emailjs from '@emailjs/browser';
 
 const Contact = () => {
+
+	const form = useRef();
+    const sendEmail = (e) => {
+        e.preventDefault();
+    
+        emailjs.sendForm('service_mxxpk8b', 'template_e0k7slh', form.current, 'x4CzuEMWxKlmso33e')
+          .then((result) => {
+              console.log(result.text);
+              toast.success('Thanks for your message')
+          }, (error) => {
+              console.log(error.text);
+          });
+      };
+
     return (
         <div>
             <section className="py-6 mt-10">
@@ -13,7 +29,8 @@ const Contact = () => {
 					<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" className="w-5 h-5 mr-2 sm:mr-6">
 						<path fillRule="evenodd" d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z" clipRule="evenodd"></path>
 					</svg>
-					<span>Moakhali Dohs, Dhaka</span>
+					<span>Adabor, Dhaka, Bangladesh
+					</span>
 				</p>
 				<p className="flex items-center">
 					<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" className="w-5 h-5 mr-2 sm:mr-6">
@@ -30,20 +47,15 @@ const Contact = () => {
 				</p>
 			</div>
 		</div>
-		<form  className="flex flex-col py-6 space-y-6 md:py-0 md:px-6 ng-untouched ng-pristine ng-valid">
-			<label className="block">
-				<span className="mb-1">Full name</span>
-				<input type="text" placeholder="Your Name" className="block w-full rounded-md shadow-sm focus:ring focus:ring-opacity-75 focus:ring-violet-400 dark:bg-gray-800" />
-			</label>
-			<label className="block">
-				<span className="mb-1">Email address</span>
-				<input type="email" placeholder="Your Email" className="block w-full rounded-md shadow-sm focus:ring focus:ring-opacity-75 focus:ring-violet-400 dark:bg-gray-800" />
-			</label>
-			<label className="block">
-				<span className="mb-1">Message</span>
-				<textarea rows="3" className="block w-full rounded-md focus:ring focus:ring-opacity-75 focus:ring-violet-400 dark:bg-gray-800"></textarea>
-			</label>
-			<button type="button" className="btn btn-success px-8 py-3 text-lg rounded ">Submit</button>
+		<form ref={form} onSubmit={sendEmail} className="flex flex-col py-6 space-y-6 md:py-0 md:px-6 ng-untouched ng-pristine ng-valid">
+			
+				<input type="text" placeholder="Your Name" name="name" className="input input-bordered input-success w-full " />
+			
+				<input type="email" placeholder="Your Email" name="email" className="input input-bordered input-success w-full " />
+			
+				<textarea rows="3" name="message" placeholder='Your Mesage' className="textarea textarea-success"></textarea>
+			
+			<button type='submit' className="btn btn-success px-8 py-3 text-lg rounded ">Submit</button>
 		</form>
 	</div>
 </section>
