@@ -34,7 +34,7 @@ const handleReportToAdmin = () =>{
 }
 
     return (
-   <div className=''>  
+   <div className='mb-24'>  
 <div className="flex flex-col max-w-lg p-6 space-y-6 overflow-hidden rounded-lg shadow-md dark:bg-gray-900 dark:text-gray-100">
 	<div className="flex space-x-4">
 		<img alt="" src={user?.photoURL} className="object-cover w-12 h-12 rounded-full shadow dark:bg-gray-500" />
@@ -86,8 +86,12 @@ const handleReportToAdmin = () =>{
      className="btn btn-success " 
      onClick={ () => setProductBooking(mobileProduct)}
      >Book Now</label>
+     <div className='text-center'>
+   <button className='btn btn-error btn-sm w-1/2' onClick={handleReportToAdmin}>Report to Admin</button>
      </div>
-   <button onClick={handleReportToAdmin}>Report to Admin</button>
+     </div>
+    
+    
 </div>
     );
 };
